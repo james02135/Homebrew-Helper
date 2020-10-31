@@ -1,6 +1,7 @@
 package org.wit.homebrew.models
 
  data class HomebrewModel(
+     var id: Long = 0,
      var beerName: String = "",
      var beerStyle: String = "",
      var anotherMalt : Boolean = false,
@@ -17,8 +18,8 @@ package org.wit.homebrew.models
      val hops : MutableList<String> = mutableListOf(),
      val hopTimes : MutableList<Int> = mutableListOf(),
      var yeast : String = "",
-     var origGrav : Int = 0,
-     var finalGrav : Int = 0,
+     var origGrav : Float = 0,
+     var finalGrav : Float = 0,
      var dryHop : String = "",
      var dryHopType : String = "",
      var dryHopLength : Int = 0,
