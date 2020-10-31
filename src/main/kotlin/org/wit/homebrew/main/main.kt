@@ -1,8 +1,10 @@
-package org.wit.homebrew
+package org.wit.homebrew.main
 
 import mu.KotlinLogging
+import org.wit.homebrew.models.HomebrewModel
 
 private val logger = KotlinLogging.logger {}
+var homebrew = HomebrewModel()
 
 fun main(args: Array<String>) {
     logger.info { "Launching Homebrew Helper Console App" }
@@ -45,109 +47,87 @@ fun menu() : Int {
 }
 
 fun addHomebrew(){
-    var beerName : String
-    var beerStyle : String
-    var anotherMalt : Boolean
-    var nextMalt : Int
-    var maltChoice : String
-    var malt1 : String
-    val malts : MutableList<String> = mutableListOf()
-    var boilLength : Int
-    var anotherHop : Boolean
-    var nextHop : Int
-    var hopChoice : String
-    var hop1 : String
-    var hopTime1 : Int
-    val hops : MutableList<String> = mutableListOf()
-    val hopTimes : MutableList<Int> = mutableListOf()
-    var yeast : String
-    var origGrav : Int
-    var finalGrav : Int
-    var dryHop : String
-    var dryHopType : String
-    var dryHopLength : Int
-
-    anotherMalt = true
-    anotherHop = true
-    nextMalt = 0
-    nextHop = 0
+    homebrew.anotherMalt = true
+    homebrew.anotherHop = true
+    homebrew.nextMalt = 0
+    homebrew.nextHop = 0
 
     println("You Chose to Add a New Homebrew")
     println()
     print("Enter the beer name : ")
-    beerName = readLine()!!
+    homebrew.beerName = readLine()!!
     println()
     print("Enter the beer style : ")
-    beerStyle = readLine()!!
+    homebrew.beerStyle = readLine()!!
     println()
     print("Enter the first malt used : ")
-    malt1 = readLine()!!
+    homebrew.malt1 = readLine()!!
     println()
-    while (anotherMalt != false) {
-        while (nextMalt < 3) {
+    while (homebrew.anotherMalt != false) {
+        while (homebrew.nextMalt < 3) {
             print("Would you like to enter another malt? (y/n) : ")
-            maltChoice = readLine()!!
-            if (maltChoice.equals("n")) {
-                anotherMalt = false
+            homebrew.maltChoice = readLine()!!
+            if (homebrew.maltChoice.equals("n")) {
+                homebrew.anotherMalt = false
                 break
             } else {
                 println()
                 print("Enter the next malt used : ")
-                malts.add(readLine()!!)
+                homebrew.malts.add(readLine()!!)
                 println()
-                nextMalt++
+                homebrew.nextMalt++
             }
         }
     }
     println()
     print("Enter the boil length in minutes : ")
     println()
-    boilLength = readInt()!!
+    homebrew.boilLength = readInt()!!
     println()
     print("Enter the first type of hop used : ")
-    hop1 = readLine()!!
+    homebrew.hop1 = readLine()!!
     println()
-    print("Enter when $hop1 was added to the boil : ")
-    hopTime1 = readInt()!!
+    print("Enter when [ " + homebrew.hop1 + " ] was added to the boil : ")
+    homebrew.hopTime1 = readInt()!!
     println()
-    while (anotherHop != false) {
-        while (nextHop < 3) {
+    while (homebrew.anotherHop != false) {
+        while (homebrew.nextHop < 3) {
             print("Would you like to enter another hop? (y/n) : ")
-            hopChoice = readLine()!!
-            if (hopChoice.equals("n")) {
-                anotherHop = false
+            homebrew.hopChoice = readLine()!!
+            if (homebrew.hopChoice.equals("n")) {
+                homebrew.anotherHop = false
                 break
             } else {
                 println()
                 print("Enter the next hop used : ")
-                hops.add(readLine()!!)
+                homebrew.hops.add(readLine()!!)
                 println()
-                nextHop++
+                homebrew.nextHop++
                 print("Enter when the hop was added to the boil : ")
-                hopTimes.add(readInt()!!)
+                homebrew.hopTimes.add(readInt()!!)
                 println()
             }
         }
     }
     println()
     print("Enter the yeast name : ")
-    yeast = readLine()!!
+    homebrew.yeast = readLine()!!
     println()
     print("Enter the measured Original Gravity : ")
-    origGrav = readInt()!!
+    homebrew.origGrav = readInt()!!
     println()
     print("Enter the measured Final Gravity : ")
-    finalGrav = readInt()!!
+    homebrew.finalGrav = readInt()!!
     println()
     print("Did you dry hop? (y/n) : ")
-    dryHop = readLine()!!
-        if (dryHop != "n") {
+    homebrew.dryHop = readLine()!!
+        if (homebrew.dryHop != "n") {
             println()
             print("Enter the hop type used to dry hop : ")
-            dryHopType = readLine()!!
+            homebrew.dryHopType = readLine()!!
             println()
             print("How long did you dry hop : ")
-            dryHopLength = readInt()!!
+            homebrew.dryHopLength = readInt()!!
             println()
         }
 }
@@ -155,11 +135,11 @@ fun addHomebrew(){
 fun updateHomebrew() {
     println("You Chose to Update a Homebrew")
     println()
-    print("Enter a new Beer Name for [ $beerName ] : ")
-    beerName = readLine()!!
-    print("Enter a new Beer Style for [ $beerStyle ] : ")
-    beerStyle = readLine()!!
-    println(" You entered [ $beerName ] for the Beer Name, and [ $beerStyle ] for the Beer Style")
+    print("Enter a new Beer Name for [ " + homebrew.beerName + " ] : ")
+    homebrew.beerName = readLine()!!
+    print("Enter a new Beer Style for [ " + homebrew.beerStyle + " ] : ")
+    homebrew.beerStyle = readLine()!!
+    println(" You updated [ " + homebrew.beerName + " ] for the Beer Name, and [ " + homebrew.beerStyle + " ] for the Beer Style")
 }
 
 fun listHomebrews() {
