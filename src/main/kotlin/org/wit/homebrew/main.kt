@@ -154,6 +154,12 @@ fun addHomebrew(){
 
 fun updateHomebrew() {
     println("You Chose to Update a Homebrew")
+    println()
+    print("Enter a new Beer Name for [ $beerName ] : ")
+    beerName = readLine()!!
+    print("Enter a new Beer Style for [ $beerStyle ] : ")
+    beerStyle = readLine()!!
+    println(" You entered [ $beerName ] for the Beer Name, and [ $beerStyle ] for the Beer Style")
 }
 
 fun listHomebrews() {
