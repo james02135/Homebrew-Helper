@@ -5,6 +5,7 @@ import org.wit.homebrew.models.HomebrewModel
 
 private val logger = KotlinLogging.logger {}
 var homebrew = HomebrewModel()
+val homebrews = ArrayList<HomebrewModel>()
 
 fun main(args: Array<String>) {
     logger.info { "Launching Homebrew Helper Console App" }
@@ -130,6 +131,13 @@ fun addHomebrew(){
             homebrew.dryHopLength = readInt()!!
             println()
         }
+    if (homebrew.beerName.isNotEmpty() && homebrew.beerStyle.isNotEmpty()) {
+        homebrews.add(homebrew.copy())
+        logger.info("Homebrew Added : [ $homebrew ]")
+    }
+    else
+        logger.info("Homebrew Not Added")
+
 }
 
 fun updateHomebrew() {
@@ -144,6 +152,8 @@ fun updateHomebrew() {
 
 fun listHomebrews() {
     println("You Chose to List All Homebrews")
+    println()
+    homebrews.forEach { logger.info("${it}") }
 }
 
 fun readInt() = readLine()!!.toInt()
