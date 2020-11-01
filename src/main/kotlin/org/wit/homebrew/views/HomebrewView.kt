@@ -3,6 +3,7 @@ package org.wit.homebrew.views
 import org.wit.homebrew.main.*
 import org.wit.homebrew.models.HomebrewStore
 import org.wit.homebrew.models.HomebrewMemStore
+import org.wit.homebrew.models.HomebrewJSONStore
 import org.wit.homebrew.models.HomebrewModel
 
 class HomebrewView {
@@ -27,16 +28,16 @@ class HomebrewView {
         return option
     }
 
-    fun listHomebrews(homebrews : HomebrewMemStore) {
+    fun listHomebrews(homebrews : HomebrewJSONStore) {
         println("You Chose to List All Homebrews")
         println()
         homebrews.logAll()
         println()
     }
 
-    fun findHomebrew(homebrews : HomebrewModel) {
+    fun findHomebrew(homebrew : HomebrewModel) {
         if(homebrew != null)
-            println("Homebrew Details [ $aHomebrew ]")
+            println("Homebrew Details [ $homebrew ]")
         else
             println("Homebrew not found...")
 
@@ -135,14 +136,14 @@ class HomebrewView {
         var tempName : String?
         var tempStyle : String?
 
-        if(aHomebrew != null) {
+        if(homebrew != null) {
             print("Enter a new Beer Name for [ " + homebrew.beerName + " ] : ")
             tempName = readLine()!!
             print("Enter a new Beer Style for [ " + homebrew.beerStyle + " ] : ")
             tempStyle = readLine()!!
             if (!tempName.isNullOrEmpty() && !tempStyle.isNullOrEmpty()) {
-                aHomebrew.beerName = tempName
-                aHomebrew.beerStyle = tempStyle
+                homebrew.beerName = tempName
+                homebrew.beerStyle = tempStyle
                 return true
             }
 
@@ -162,3 +163,7 @@ class HomebrewView {
         return searchId
     }
 }
+
+fun readInt() = readLine()!!.toInt()
+
+fun readDouble() = readLine()!!.toDouble()
