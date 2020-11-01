@@ -1,5 +1,7 @@
 package org.wit.homebrew.models
 
+import mu.KotlinLogging
+
 import org.wit.homebrew.main.main
 import org.wit.homebrew.models.HomebrewModel
 import org.wit.homebrew.models.HomebrewStore
@@ -21,7 +23,7 @@ class HomebrewMemStore : HomebrewStore {
 
     override fun findOne(id: Long) : HomebrewModel? {
         var foundHomebrew: HomebrewModel? = homebrews.find { p -> p.id == id }
-        return foundPlacemark
+        return foundHomebrew
     }
 
     override fun create(homebrew: HomebrewModel) {
