@@ -52,6 +52,11 @@ class HomebrewJSONStore : HomebrewStore {
         serialize()
     }
 
+    override fun delete(homebrew: HomebrewModel) {
+        homebrews.remove(homebrew)
+        serialize()
+    }
+
     internal fun logAll() {
         homebrews.forEach { logger.info("${it}") }
     }

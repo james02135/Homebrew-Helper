@@ -9,4 +9,5 @@ interface HomebrewStore {
     fun findOne(id: Long): HomebrewModel?
     fun create(homebrew: HomebrewModel)
     fun update(homebrew: HomebrewModel)
+    fun delete(homebrew: HomebrewModel)
 }

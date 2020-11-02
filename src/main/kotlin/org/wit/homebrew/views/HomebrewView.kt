@@ -17,6 +17,7 @@ class HomebrewView {
         println(" 2. Update a Homebrew")
         println(" 3. List All Homebrews")
         println(" 4. Find a Homebrew")
+        //println(" 5. Delete a Homebrew")
         println("-1. Exit")
         println()
         print("Enter an integer : ")
@@ -35,7 +36,7 @@ class HomebrewView {
         println()
     }
 
-    fun findHomebrew(homebrew : HomebrewModel) {
+    fun showHomebrew(homebrew : HomebrewModel) {
         if(homebrew != null)
             println("Homebrew Details [ $homebrew ]")
         else
@@ -154,7 +155,7 @@ class HomebrewView {
     fun getId() : Long {
         var strId : String?
         var searchId : Long
-        print("Enter id to Search/Update : ")
+        print("Enter the ID of the Homebrew to Search/Update : ")
         strId = readLine()!!
         searchId = if (strId.toLongOrNull() != null && !strId.isEmpty())
             strId.toLong()

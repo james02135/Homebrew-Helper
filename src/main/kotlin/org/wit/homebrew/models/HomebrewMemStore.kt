@@ -40,6 +40,10 @@ class HomebrewMemStore : HomebrewStore {
         }
     }
 
+    override fun delete(homebrew: HomebrewModel) {
+        homebrews.remove(homebrew)
+    }
+
     internal fun logAll() {
         homebrews.forEach { logger.info("${it}") }
     }

@@ -1,7 +1,6 @@
 package org.wit.homebrew.controllers
 
 import mu.KotlinLogging
-import org.wit.homebrew.models.HomebrewMemStore
 import org.wit.homebrew.models.HomebrewJSONStore
 import org.wit.homebrew.models.HomebrewModel
 import org.wit.homebrew.views.HomebrewView
@@ -27,6 +26,7 @@ class HomebrewController {
                 2 -> update()
                 3 -> list()
                 4 -> search()
+                5 -> delete()
                 -1 -> println("Exiting App")
                 else -> println("Invalid Option")
             }
@@ -56,19 +56,32 @@ class HomebrewController {
         if(aHomebrew != null) {
             if(homebrewView.updateHomebrewData(aHomebrew)) {
                 homebrews.update(aHomebrew)
-                homebrewView.findHomebrew(aHomebrew)
+                homebrewView.showHomebrew(aHomebrew)
                 logger.info("Homebrew Updated : [ $aHomebrew ]")
             }
             else
                 logger.info("Homebrew Not Updated")
         }
         else
-            println("Homebrew Not Updated...")
+            println("Homebrew Not Updated")
+    }
+
+    fun delete() {
+        homebrewView.listHomebrews(homebrews)
+        var searchId = homebrewView.getId()
+        var aHomebrew = search(searchId)
+        if (aHomebrew != null) {
+            homebrews.delete(aHomebrew)
+            println("Homebrew Deleted")
+            homebrewView.listHomebrews(homebrews)
+        }
+        else
+            println("Homebrew Not Deleted")
     }
 
     fun search() {
         val aHomebrew = search(homebrewView.getId())!!
-        homebrewView.findHomebrew(aHomebrew)
+        homebrewView.showHomebrew(aHomebrew)
     }
 
     fun search(id: Long) : HomebrewModel? {
