@@ -28,8 +28,8 @@ fun read(fileName: String): String {
             var done = false
             while (!done) {
                 var line = bufferedReader.readLine()
-                done = (line == null);
-                if (line != null) partialStr.append(line);
+                done = (line == null)
+                if (line != null) partialStr.append(line)
             }
             inputStreamReader.close()
             str = partialStr.toString()

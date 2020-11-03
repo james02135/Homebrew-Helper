@@ -1,7 +1,7 @@
 package org.wit.homebrew.models
 
  data class HomebrewModel(
-     var id: Long = 0,
+     var id: Int = 0,
      var beerName: String = "",
      var beerStyle: String = "",
      var anotherMalt : Boolean = false,
@@ -20,6 +20,7 @@ package org.wit.homebrew.models
      var yeast : String = "",
      var origGrav : Double = 0.0,
      var finalGrav : Double = 0.0,
+     var ABV : Double = 0.0,
      var dryHop : String = "",
      var dryHopType : String = "",
      var dryHopLength : Int = 0,

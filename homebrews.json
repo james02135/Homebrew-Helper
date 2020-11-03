@@ -1,8 +1,8 @@
 [
   {
-    "id": -627354539933017748,
-    "beerName": "June ",
-    "beerStyle": "IPA",
+    "id": 1,
+    "beerName": "July",
+    "beerStyle": "Hazy IPA",
     "anotherMalt": false,
     "nextMalt": 2,
     "maltChoice": "n",
@@ -28,34 +28,76 @@
     "yeast": "MJ American West Coast",
     "origGrav": 1.06,
     "finalGrav": 1.01,
+    "ABV": 0.0,
     "dryHop": "y",
     "dryHopType": "Citra",
     "dryHopLength": 7
   },
   {
-    "id": 2147430211771769079,
-    "beerName": "October",
-    "beerStyle": "Marzen",
+    "id": 0,
+    "beerName": "Christmas",
+    "beerStyle": "Barleywine",
     "anotherMalt": false,
-    "nextMalt": 1,
+    "nextMalt": 2,
     "maltChoice": "n",
-    "malt1": "Smoked",
+    "malt1": "Pale",
     "malts": [
-      "Crystal"
+      "Crystal",
+      "Maris Otter"
     ],
-    "boilLength": 60,
+    "boilLength": 120,
     "anotherHop": false,
-    "nextHop": 0,
+    "nextHop": 2,
     "hopChoice": "n",
-    "hop1": "Saaz",
+    "hop1": "Simcoe",
     "hopTime1": 60,
-    "hops": [],
-    "hopTimes": [],
-    "yeast": "Marzen",
-    "origGrav": 1.055,
-    "finalGrav": 1.015,
+    "hops": [
+      "Mosaic",
+      "Summit"
+    ],
+    "hopTimes": [
+      30,
+      15
+    ],
+    "yeast": "MJ Special Ale",
+    "origGrav": 1.11,
+    "finalGrav": 1.02,
+    "ABV": 0.0,
     "dryHop": "n",
     "dryHopType": "",
     "dryHopLength": 0
+  },
+  {
+    "id": 0,
+    "beerName": "Juicy",
+    "beerStyle": "Double IPA",
+    "anotherMalt": false,
+    "nextMalt": 1,
+    "maltChoice": "n",
+    "malt1": "Maris Otter",
+    "malts": [
+      "Pale"
+    ],
+    "boilLength": 60,
+    "anotherHop": false,
+    "nextHop": 2,
+    "hopChoice": "n",
+    "hop1": "Citra",
+    "hopTime1": 60,
+    "hops": [
+      "Azacca",
+      "Simcoe"
+    ],
+    "hopTimes": [
+      30,
+      15
+    ],
+    "yeast": "MJ Vermont Ale",
+    "origGrav": 1.08,
+    "finalGrav": 1.02,
+    "ABV": 8.2,
+    "dryHop": "y",
+    "dryHopType": "Mosaic",
+    "dryHopLength": 7
   }
 ]

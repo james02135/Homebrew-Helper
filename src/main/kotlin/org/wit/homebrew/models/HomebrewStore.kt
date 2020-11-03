@@ -6,7 +6,7 @@ import org.wit.homebrew.models.HomebrewMemStore
 
 interface HomebrewStore {
     fun findAll(): List<HomebrewModel>
-    fun findOne(id: Long): HomebrewModel?
+    fun findOne(id: Int): HomebrewModel?
     fun create(homebrew: HomebrewModel)
     fun update(homebrew: HomebrewModel)
     fun delete(homebrew: HomebrewModel)
