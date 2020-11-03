@@ -84,7 +84,7 @@ class HomebrewController {
         homebrewView.showHomebrew(aHomebrew)
     }
 
-    fun search(id: Long) : HomebrewModel? {
+    fun search(id: Int) : HomebrewModel? {
         var foundHomebrew = homebrews.findOne(id)
         return foundHomebrew
     }

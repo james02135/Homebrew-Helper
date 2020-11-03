@@ -17,7 +17,7 @@ class HomebrewView {
         println(" 2. Update a Homebrew")
         println(" 3. List All Homebrews")
         println(" 4. Find a Homebrew")
-        //println(" 5. Delete a Homebrew")
+        println(" 5. Delete a Homebrew")
         println("-1. Exit")
         println()
         print("Enter an integer : ")
@@ -50,6 +50,7 @@ class HomebrewView {
         homebrew.nextMalt = 0
         homebrew.nextHop = 0
 
+
         println("You Chose to Add a New Homebrew")
         println()
         print("Enter the beer name : ")
@@ -80,13 +81,13 @@ class HomebrewView {
         println()
         print("Enter the boil length in minutes : ")
         println()
-        homebrew.boilLength = readInt()!!
+        homebrew.boilLength = readInt()
         println()
         print("Enter the first type of hop used : ")
         homebrew.hop1 = readLine()!!
         println()
         print("Enter when [ " + homebrew.hop1 + " ] was added to the boil : ")
-        homebrew.hopTime1 = readInt()!!
+        homebrew.hopTime1 = readInt()
         println()
         while (homebrew.anotherHop != false) {
             while (homebrew.nextHop < 3) {
@@ -102,7 +103,7 @@ class HomebrewView {
                     println()
                     homebrew.nextHop++
                     print("Enter when the hop was added to the boil : ")
-                    homebrew.hopTimes.add(readInt()!!)
+                    homebrew.hopTimes.add(readInt())
                     println()
                 }
             }
@@ -112,10 +113,13 @@ class HomebrewView {
         homebrew.yeast = readLine()!!
         println()
         print("Enter the measured Original Gravity : ")
-        homebrew.origGrav = readDouble()!!
+        homebrew.origGrav = readDouble()
         println()
         print("Enter the measured Final Gravity : ")
-        homebrew.finalGrav = readDouble()!!
+        homebrew.finalGrav = readDouble()
+        println()
+        print("Enter the Final ABV : ")
+        homebrew.ABV = readDouble()
         println()
         print("Did you dry hop? (y/n) : ")
         homebrew.dryHop = readLine()!!
@@ -125,10 +129,11 @@ class HomebrewView {
             homebrew.dryHopType = readLine()!!
             println()
             print("How long did you dry hop : ")
-            homebrew.dryHopLength = readInt()!!
+            homebrew.dryHopLength = readInt()
             println()
         }
         return homebrew.beerName.isNotEmpty() && homebrew.beerStyle.isNotEmpty()
+        homebrew.id++
     }
 
     fun updateHomebrewData(homebrew :HomebrewModel) : Boolean{
@@ -147,18 +152,17 @@ class HomebrewView {
                 homebrew.beerStyle = tempStyle
                 return true
             }
-
         }
         return false
     }
 
-    fun getId() : Long {
+    fun getId() : Int {
         var strId : String?
-        var searchId : Long
+        var searchId : Int
         print("Enter the ID of the Homebrew to Search/Update : ")
         strId = readLine()!!
-        searchId = if (strId.toLongOrNull() != null && !strId.isEmpty())
-            strId.toLong()
+        searchId = if (strId != null && !strId.isEmpty())
+            strId.toInt()
         else
             -9
         return searchId
