@@ -14,8 +14,11 @@ val JSON_FILE = "homebrews.json"
 val gsonBuilder = GsonBuilder().setPrettyPrinting().create()
 val listType = object : TypeToken<java.util.ArrayList<HomebrewModel>>() {}.type
 
-class HomebrewJSONStore : HomebrewStore {
+fun generateRandomId(): Long {
+    return Random().nextLong()
+}
 
+class HomebrewJSONStore : HomebrewStore {
     var homebrews = mutableListOf<HomebrewModel>()
 
     init {
@@ -28,18 +31,19 @@ class HomebrewJSONStore : HomebrewStore {
         return homebrews
     }
 
-    override fun findOne(id: Int) : HomebrewModel? {
+    override fun findOne(id: Long) : HomebrewModel? {
         var foundHomebrew: HomebrewModel? = homebrews.find { p -> p.id == id }
         return foundHomebrew
     }
 
     override fun create(homebrew: HomebrewModel) {
+        homebrew.id = generateRandomId()
         homebrews.add(homebrew)
         serialize()
     }
 
     override fun update(homebrew: HomebrewModel) {
-        var foundHomebrew = findOne(homebrew.id)
+        var foundHomebrew = findOne(homebrew.id!!)
         if (foundHomebrew != null) {
             foundHomebrew.beerName = homebrew.beerName
             foundHomebrew.beerStyle = homebrew.beerStyle
