@@ -15,12 +15,12 @@ class HomebrewView {
         println("MAIN MENU")
         println(" 1. Add a Homebrew")
         println(" 2. Update a Homebrew")
-        println(" 3. List All Homebrews")
+        println(" 3. List all Homebrews")
         println(" 4. Find a Homebrew")
         println(" 5. Delete a Homebrew")
         println("-1. Exit")
         println()
-        print("Enter an integer : ")
+        print("Enter your choice : ")
         input = readLine()!!
         option = if (input.toIntOrNull() != null && !input.isEmpty())
             input.toInt()
@@ -30,18 +30,41 @@ class HomebrewView {
     }
 
     fun listHomebrews(homebrews : HomebrewJSONStore) {
-        println("You Chose to List All Homebrews")
-        println()
-        homebrews.logAll()
-        println()
+        if(homebrews != null) {
+            println("You Chose to List All Homebrews")
+            println()
+            homebrews.logAll()
+            println()
+        }
     }
 
     fun showHomebrew(homebrew : HomebrewModel) {
-        if(homebrew != null)
-            println("Homebrew Details [ $homebrew ]")
-        else
-            println("Homebrew not found...")
-
+        if(homebrew != null) {
+            println("Homebrew Details")
+            println("Beer Name : [ " + homebrew.beerName + " ] ")
+            println("Beer ID : [ " + homebrew.id + " ] ")
+            println("Beer Style : [ " + homebrew.beerStyle + " ] ")
+            println("ABV : [ " + homebrew.ABV + " ] ")
+            println("Primary Malt : [ " + homebrew.malt1 + " ]")
+            if (homebrew.malts != null && !homebrew.malts.isEmpty()) {
+                println("Additional Malt(s) : [ " + homebrew.malts + " ]")
+            }
+            println("Boil Length : [ " + homebrew.boilLength + " ]")
+            println("Primary Hop : [ " + homebrew.hop1 + " ]")
+            println(homebrew.hop1 + " was added " + homebrew.hopTime1 + " minutes remaining in the boil")
+            if (homebrew.hops != null && !homebrew.hops.isEmpty()) {
+                println("Additional Hop(s) : [ " + homebrew.hops + " ]")
+            }
+            if (homebrew.hopTimes != null && !homebrew.hopTimes.isEmpty()) {
+                    println("Hops were added to the boil at " + homebrew.hopTimes + " minutes remaining in the boil respectively")
+            }
+            println("Yeast : [ " + homebrew.yeast + " ] ")
+            println("Original Gravity(OG) : " + homebrew.origGrav)
+            println("Final Gravity(FG) : " + homebrew.finalGrav)
+            if (homebrew.dryHop == "y") {
+                println("Dry Hopped with " + homebrew.dryHopType + " for " + homebrew.dryHopLength + " days")
+            }
+        }
     }
 
     fun addHomebrewData(homebrew : HomebrewModel) : Boolean {
@@ -80,13 +103,12 @@ class HomebrewView {
         }
         println()
         print("Enter the boil length in minutes : ")
-        println()
         homebrew.boilLength = readInt()
         println()
         print("Enter the first type of hop used : ")
         homebrew.hop1 = readLine()!!
         println()
-        print("Enter when [ " + homebrew.hop1 + " ] was added to the boil : ")
+        print("Enter how many minutes left in the boil " + homebrew.hop1 + " was added : ")
         homebrew.hopTime1 = readInt()
         println()
         while (homebrew.anotherHop != false) {
@@ -102,7 +124,7 @@ class HomebrewView {
                     homebrew.hops.add(readLine()!!)
                     println()
                     homebrew.nextHop++
-                    print("Enter when the hop was added to the boil : ")
+                    print("Enter how many minutes left in the boil the hop was added : ")
                     homebrew.hopTimes.add(readInt())
                     println()
                 }
@@ -133,7 +155,6 @@ class HomebrewView {
             println()
         }
         return homebrew.beerName.isNotEmpty() && homebrew.beerStyle.isNotEmpty()
-        homebrew.id++
     }
 
     fun updateHomebrewData(homebrew :HomebrewModel) : Boolean{
@@ -156,13 +177,13 @@ class HomebrewView {
         return false
     }
 
-    fun getId() : Int {
+    fun getId() : Long {
         var strId : String?
-        var searchId : Int
+        var searchId : Long
         print("Enter the ID of the Homebrew to Search/Update : ")
         strId = readLine()!!
-        searchId = if (strId != null && !strId.isEmpty())
-            strId.toInt()
+        searchId = if (strId.toLongOrNull() != null && !strId.isEmpty())
+            strId.toLong()
         else
             -9
         return searchId

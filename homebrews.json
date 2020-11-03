@@ -1,103 +1,35 @@
 [
   {
-    "id": 1,
-    "beerName": "July",
-    "beerStyle": "Hazy IPA",
-    "anotherMalt": false,
-    "nextMalt": 2,
-    "maltChoice": "n",
-    "malt1": "Maris Otter",
-    "malts": [
-      "Crystal",
-      "Pale"
-    ],
-    "boilLength": 60,
-    "anotherHop": false,
-    "nextHop": 2,
-    "hopChoice": "n",
-    "hop1": "Mosaic",
-    "hopTime1": 30,
-    "hops": [
-      "Azacca",
-      "Simcoe"
-    ],
-    "hopTimes": [
-      15,
-      15
-    ],
-    "yeast": "MJ American West Coast",
-    "origGrav": 1.06,
-    "finalGrav": 1.01,
-    "ABV": 0.0,
-    "dryHop": "y",
-    "dryHopType": "Citra",
-    "dryHopLength": 7
-  },
-  {
-    "id": 0,
-    "beerName": "Christmas",
-    "beerStyle": "Barleywine",
-    "anotherMalt": false,
-    "nextMalt": 2,
-    "maltChoice": "n",
-    "malt1": "Pale",
-    "malts": [
-      "Crystal",
-      "Maris Otter"
-    ],
-    "boilLength": 120,
-    "anotherHop": false,
-    "nextHop": 2,
-    "hopChoice": "n",
-    "hop1": "Simcoe",
-    "hopTime1": 60,
-    "hops": [
-      "Mosaic",
-      "Summit"
-    ],
-    "hopTimes": [
-      30,
-      15
-    ],
-    "yeast": "MJ Special Ale",
-    "origGrav": 1.11,
-    "finalGrav": 1.02,
-    "ABV": 0.0,
-    "dryHop": "n",
-    "dryHopType": "",
-    "dryHopLength": 0
-  },
-  {
-    "id": 0,
-    "beerName": "Juicy",
-    "beerStyle": "Double IPA",
+    "id": 8845503982946135275,
+    "beerName": "June",
+    "beerStyle": "IPA",
     "anotherMalt": false,
     "nextMalt": 1,
     "maltChoice": "n",
-    "malt1": "Maris Otter",
+    "malt1": "Pale",
     "malts": [
-      "Pale"
+      "Maris Otter"
     ],
     "boilLength": 60,
     "anotherHop": false,
     "nextHop": 2,
     "hopChoice": "n",
-    "hop1": "Citra",
-    "hopTime1": 60,
+    "hop1": "Cascade",
+    "hopTime1": 45,
     "hops": [
-      "Azacca",
+      "Citra",
       "Simcoe"
     ],
     "hopTimes": [
       30,
       15
     ],
-    "yeast": "MJ Vermont Ale",
-    "origGrav": 1.08,
-    "finalGrav": 1.02,
-    "ABV": 8.2,
+    "yeast": "MJ West Coast Ale",
+    "origGrav": 1.061,
+    "finalGrav": 1.011,
+    "ABV": 6.5,
     "dryHop": "y",
-    "dryHopType": "Mosaic",
+    "dryHopType": "Azacca",
     "dryHopLength": 7
   }
 ]

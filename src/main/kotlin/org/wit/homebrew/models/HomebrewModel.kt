@@ -1,7 +1,7 @@
 package org.wit.homebrew.models
 
  data class HomebrewModel(
-     var id: Int = 0,
+     var id: Long? = 0,
      var beerName: String = "",
      var beerStyle: String = "",
      var anotherMalt : Boolean = false,

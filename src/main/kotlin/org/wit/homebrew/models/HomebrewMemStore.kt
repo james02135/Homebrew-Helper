@@ -7,9 +7,9 @@ import org.wit.homebrew.models.HomebrewModel
 import org.wit.homebrew.models.HomebrewStore
 
 private val logger = KotlinLogging.logger {}
-var lastId = 0
+var lastId = 0L
 
-internal fun getId(): Int {
+internal fun getId(): Long {
     return lastId++
 }
 
@@ -21,7 +21,7 @@ class HomebrewMemStore : HomebrewStore {
         return homebrews
     }
 
-    override fun findOne(id: Int) : HomebrewModel? {
+    override fun findOne(id: Long) : HomebrewModel? {
         var foundHomebrew: HomebrewModel? = homebrews.find { p -> p.id == id }
         return foundHomebrew
     }
@@ -33,7 +33,7 @@ class HomebrewMemStore : HomebrewStore {
     }
 
     override fun update(homebrew: HomebrewModel) {
-        var foundHomebrew = findOne(homebrew.id)
+        var foundHomebrew = findOne(homebrew.id!!)
         if (foundHomebrew != null) {
             foundHomebrew.beerName = homebrew.beerName
             foundHomebrew.beerStyle = homebrew.beerStyle
