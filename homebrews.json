@@ -31,5 +31,36 @@
     "dryHop": "y",
     "dryHopType": "Azacca",
     "dryHopLength": 7
+  },
+  {
+    "id": -1262054115276065202,
+    "beerName": "Christmas",
+    "beerStyle": "Barleywine",
+    "anotherMalt": false,
+    "nextMalt": 1,
+    "maltChoice": "n",
+    "malt1": "Crystal",
+    "malts": [
+      "Maris Otter"
+    ],
+    "boilLength": 120,
+    "anotherHop": false,
+    "nextHop": 1,
+    "hopChoice": "n",
+    "hop1": "Simcoe",
+    "hopTime1": 60,
+    "hops": [
+      "Cascade"
+    ],
+    "hopTimes": [
+      30
+    ],
+    "yeast": "MJ Special Ale",
+    "origGrav": 1.106,
+    "finalGrav": 1.022,
+    "ABV": 10.4,
+    "dryHop": "n",
+    "dryHopType": "",
+    "dryHopLength": 0
   }
 ]
