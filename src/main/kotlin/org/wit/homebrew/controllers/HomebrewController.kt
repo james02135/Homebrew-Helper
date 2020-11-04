@@ -39,10 +39,13 @@ class HomebrewController {
 
     fun add(){
         var aHomebrew = HomebrewModel()
-        if (homebrewView.addHomebrewData(aHomebrew))
+        if (homebrewView.addHomebrewData(aHomebrew)) {
             homebrews.create(aHomebrew)
-        else
+            logger.info("Homebrew Added")
+        }
+        else {
             logger.info("Homebrew Not Added")
+        }
     }
 
     fun list() {

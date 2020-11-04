@@ -31,9 +31,9 @@ class HomebrewView {
 
     fun listHomebrews(homebrews : HomebrewJSONStore) {
         if(homebrews != null) {
-            println("You Chose to List All Homebrews")
+            println("You chose to list all homebrews")
             println()
-            homebrews.logAll()
+            homebrews.showAll()
             println()
         }
     }

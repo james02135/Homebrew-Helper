@@ -56,8 +56,12 @@ class HomebrewJSONStore : HomebrewStore {
         serialize()
     }
 
-    internal fun logAll() {
-        homebrews.forEach { logger.info("${it}") }
+    public fun showAll() {
+        val homebrewsIterator = homebrews.iterator()
+        while (homebrewsIterator.hasNext() == true) {
+            var aHomebrew = homebrewsIterator.next()
+            println("Beer ID : " + aHomebrew.id + " , Beer Name : " + aHomebrew.beerName)
+        }
     }
 
     private fun serialize() {
