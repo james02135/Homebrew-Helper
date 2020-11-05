@@ -1,66 +1,90 @@
 [
   {
-    "id": 8845503982946135275,
-    "beerName": "June",
-    "beerStyle": "IPA",
+    "id": 7000297681334397231,
+    "beerName": "Beershie",
+    "beerStyle": "Chocolate Stout",
+    "anotherMalt": false,
+    "nextMalt": 2,
+    "maltChoice": "n",
+    "malt1": "Black",
+    "malts": [
+      "Chocolate",
+      "Wheat"
+    ],
+    "boilLength": 60,
+    "anotherHop": false,
+    "nextHop": 0,
+    "hopChoice": "n",
+    "hop1": "Cascade",
+    "hopTime1": 30,
+    "hops": [],
+    "hopTimes": [],
+    "yeast": "MJ Stout Ale",
+    "origGrav": 1.052,
+    "finalGrav": 1.011,
+    "ABV": 5.5,
+    "dryHop": "n",
+    "dryHopType": "",
+    "dryHopLength": 0
+  },
+  {
+    "id": 6703428917832103840,
+    "beerName": "Banoonie",
+    "beerStyle": "Cream Ale",
     "anotherMalt": false,
     "nextMalt": 1,
     "maltChoice": "n",
     "malt1": "Pale",
     "malts": [
-      "Maris Otter"
+      "Wheat"
     ],
     "boilLength": 60,
     "anotherHop": false,
-    "nextHop": 2,
+    "nextHop": 0,
     "hopChoice": "n",
     "hop1": "Cascade",
+    "hopTime1": 20,
+    "hops": [],
+    "hopTimes": [],
+    "yeast": "MJ Cream Ale",
+    "origGrav": 1.048,
+    "finalGrav": 1.011,
+    "ABV": 4.3,
+    "dryHop": "n",
+    "dryHopType": "",
+    "dryHopLength": 0
+  },
+  {
+    "id": -2553948853529497933,
+    "beerName": "Bubbaman",
+    "beerStyle": "Imperial IPA",
+    "anotherMalt": false,
+    "nextMalt": 1,
+    "maltChoice": "n",
+    "malt1": "Maris Otter",
+    "malts": [
+      "Pale"
+    ],
+    "boilLength": 90,
+    "anotherHop": false,
+    "nextHop": 2,
+    "hopChoice": "n",
+    "hop1": "Citra",
     "hopTime1": 45,
     "hops": [
-      "Citra",
-      "Simcoe"
+      "Cascade",
+      "Chinook"
     ],
     "hopTimes": [
       30,
       15
     ],
     "yeast": "MJ West Coast Ale",
-    "origGrav": 1.061,
-    "finalGrav": 1.011,
-    "ABV": 6.5,
+    "origGrav": 1.083,
+    "finalGrav": 1.016,
+    "ABV": 8.7,
     "dryHop": "y",
     "dryHopType": "Azacca",
     "dryHopLength": 7
-  },
-  {
-    "id": -1262054115276065202,
-    "beerName": "Christmas",
-    "beerStyle": "Barleywine",
-    "anotherMalt": false,
-    "nextMalt": 1,
-    "maltChoice": "n",
-    "malt1": "Crystal",
-    "malts": [
-      "Maris Otter"
-    ],
-    "boilLength": 120,
-    "anotherHop": false,
-    "nextHop": 1,
-    "hopChoice": "n",
-    "hop1": "Simcoe",
-    "hopTime1": 60,
-    "hops": [
-      "Cascade"
-    ],
-    "hopTimes": [
-      30
-    ],
-    "yeast": "MJ Special Ale",
-    "origGrav": 1.106,
-    "finalGrav": 1.022,
-    "ABV": 10.4,
-    "dryHop": "n",
-    "dryHopType": "",
-    "dryHopLength": 0
   }
 ]
