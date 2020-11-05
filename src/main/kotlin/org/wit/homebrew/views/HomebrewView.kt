@@ -6,7 +6,13 @@ import org.wit.homebrew.models.HomebrewMemStore
 import org.wit.homebrew.models.HomebrewJSONStore
 import org.wit.homebrew.models.HomebrewModel
 
+/*
+Handles I/O from the user
+ */
 class HomebrewView {
+    /*
+    Menu for the user to chose which option
+     */
     fun menu() : Int {
 
         var option : Int
@@ -29,6 +35,10 @@ class HomebrewView {
         return option
     }
 
+    /*
+    Lists all of the available homebrews saved in the JSON file
+    uses the showAll() function for better UI/UX
+     */
     fun listHomebrews(homebrews : HomebrewJSONStore) {
         if(homebrews != null) {
             println("You chose to list all homebrews")
@@ -38,9 +48,15 @@ class HomebrewView {
         }
     }
 
+    /*
+    This shows the user all of the data associated with a homebrew
+    once the user enters a correct ID
+     */
     fun showHomebrew(homebrew : HomebrewModel) {
         if(homebrew != null) {
+            println()
             println("Homebrew Details")
+            println()
             println("Beer Name : [ " + homebrew.beerName + " ] ")
             println("Beer ID : [ " + homebrew.id + " ] ")
             println("Beer Style : [ " + homebrew.beerStyle + " ] ")
@@ -67,12 +83,15 @@ class HomebrewView {
         }
     }
 
+    /*
+    Adds a new homebrew from the user's input
+     */
     fun addHomebrewData(homebrew : HomebrewModel) : Boolean {
+
         homebrew.anotherMalt = true
         homebrew.anotherHop = true
         homebrew.nextMalt = 0
         homebrew.nextHop = 0
-
 
         println("You Chose to Add a New Homebrew")
         println()
@@ -85,19 +104,23 @@ class HomebrewView {
         print("Enter the first malt used : ")
         homebrew.malt1 = readLine()!!
         println()
-        while (homebrew.anotherMalt != false) {
-            while (homebrew.nextMalt < 3) {
+        while (homebrew.anotherMalt != false) { // Continues to loop until the user enters "n", "N" or an invalid entry
+            while (homebrew.nextMalt <= 3) {// Continues to loop until there are a max of 2 entered
                 print("Would you like to enter another malt? (y/n) : ")
                 homebrew.maltChoice = readLine()!!
-                if (homebrew.maltChoice.equals("n")) {
+                if (homebrew.maltChoice.equals("n") || homebrew.maltChoice.equals("N")) {
                     homebrew.anotherMalt = false
                     break
-                } else {
+                } else if (homebrew.maltChoice.equals("y") || homebrew.maltChoice.equals("Y")) {
                     println()
                     print("Enter the next malt used : ")
                     homebrew.malts.add(readLine()!!)
                     println()
                     homebrew.nextMalt++
+                } else {
+                    print("Invalid Entry...")
+                    homebrew.anotherMalt = false
+                    break
                 }
             }
         }
@@ -111,14 +134,14 @@ class HomebrewView {
         print("Enter how many minutes left in the boil " + homebrew.hop1 + " was added : ")
         homebrew.hopTime1 = readInt()
         println()
-        while (homebrew.anotherHop != false) {
-            while (homebrew.nextHop < 3) {
+        while (homebrew.anotherHop != false) { //Same as above
+            while (homebrew.nextHop <= 3) {//Same as above
                 print("Would you like to enter another hop? (y/n) : ")
                 homebrew.hopChoice = readLine()!!
-                if (homebrew.hopChoice.equals("n")) {
+                if (homebrew.hopChoice.equals("n") || homebrew.hopChoice.equals("N")) {
                     homebrew.anotherHop = false
                     break
-                } else {
+                } else if (homebrew.hopChoice.equals("y") || homebrew.hopChoice.equals("Y")) {
                     println()
                     print("Enter the next hop used : ")
                     homebrew.hops.add(readLine()!!)
@@ -127,6 +150,10 @@ class HomebrewView {
                     print("Enter how many minutes left in the boil the hop was added : ")
                     homebrew.hopTimes.add(readInt())
                     println()
+                } else {
+                    print("Invalid Entry...")
+                    homebrew.anotherMalt = false
+                    break
                 }
             }
         }
@@ -145,17 +172,21 @@ class HomebrewView {
         println()
         print("Did you dry hop? (y/n) : ")
         homebrew.dryHop = readLine()!!
-        if (homebrew.dryHop != "n") {
+        if (!homebrew.dryHop.equals("n") || !homebrew.dryHop.equals("N")) {
             println()
             print("Enter the hop type used to dry hop : ")
             homebrew.dryHopType = readLine()!!
             println()
-            print("How long did you dry hop : ")
+            print("How many days did you dry hop? : ")
             homebrew.dryHopLength = readInt()
             println()
         }
-        return homebrew.beerName.isNotEmpty() && homebrew.beerStyle.isNotEmpty()
+        return true
     }
+
+    /*
+    Updates the beer name and style if the user has entered the ID
+     */
 
     fun updateHomebrewData(homebrew :HomebrewModel) : Boolean{
         println("You Chose to Update a Homebrew")
@@ -168,14 +199,23 @@ class HomebrewView {
             tempName = readLine()!!
             print("Enter a new Beer Style for [ " + homebrew.beerStyle + " ] : ")
             tempStyle = readLine()!!
-            if (!tempName.isNullOrEmpty() && !tempStyle.isNullOrEmpty()) {
+            if (!tempName.isNullOrEmpty() && !tempStyle.isNullOrEmpty()) { //Checking for valid entry
                 homebrew.beerName = tempName
                 homebrew.beerStyle = tempStyle
+                println("Homebrew Updated")
+                println("New Beer Name is [ " + homebrew.beerName + " ] and new Beer Style is [ " + homebrew.beerStyle + " ]")
                 return true
+            } else {
+                println("Homebrew not Updated")
             }
         }
+        println("Homebrew not Updated")
         return false
     }
+
+    /*
+    Searches the homebrew list for the entered ID
+     */
 
     fun getId() : Long {
         var strId : String?
@@ -188,8 +228,15 @@ class HomebrewView {
             -9
         return searchId
     }
+
+    /*
+    Helper function to read in an int
+     */
+    fun readInt() = readLine()!!.toInt()
+
+    /*
+    Helper function to read in a double
+     */
+    fun readDouble() = readLine()!!.toDouble()
 }
 
-fun readInt() = readLine()!!.toInt()
-
-fun readDouble() = readLine()!!.toDouble()

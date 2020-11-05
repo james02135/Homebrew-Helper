@@ -1,5 +1,7 @@
 package org.wit.homebrew.models
-
+/*
+Framework for a new homebrew
+ */
  data class HomebrewModel(
      var id: Long? = 0,
      var beerName: String = "",
